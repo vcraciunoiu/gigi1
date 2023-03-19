@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation 'fr.opensagres.xdocreport:fr.opensagres.xdocreport.document.odt:2.0.4'
+    implementation 'fr.opensagres.xdocreport:fr.opensagres.xdocreport.template.freemarker:2.0.4'
+    implementation 'fr.opensagres.xdocreport:fr.opensagres.xdocreport.converter.odt.odfdom:2.0.4'
+}
+
+test {
+    useJUnitPlatform()
+}
