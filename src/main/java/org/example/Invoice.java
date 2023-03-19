@@ -10,6 +10,12 @@ public class Invoice {
         InProgress, Sent, Received
     }
 
+
+    private String variabila1;
+    public void setVariabila1(String variabila1) {
+        this.variabila1 = variabila1;
+    }
+
     private Integer invoiceNumber;
     private LocalDate invoiceDate;
     private LocalDate dueDate;

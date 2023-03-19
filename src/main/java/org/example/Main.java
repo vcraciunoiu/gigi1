@@ -17,7 +17,7 @@ public class Main {
         System.out.println("Hello world!");
 
         // Get template stream (either the default or overridden by the user)
-        String fileName = "/home/vlad/Downloads/tmpl.odt";
+        String fileName = "/Users/Vlad.Craciunoiu/Downloads/tmpl.odt";
         InputStream fileInputStream = new FileInputStream(fileName);
 
         // Prepare the IXDocReport instance based on the template, using Freemarker template engine
@@ -29,6 +29,8 @@ public class Main {
         metadata.load("r", InvoiceRow.class, true);
 
         Invoice invoice = createStupidInvoice();
+//        Invoice invoice = new Invoice();
+//        invoice.setVariabila1("greatest");
 
         // Add properties to the context
         IContext ctx = report.createContext();
@@ -37,7 +39,7 @@ public class Main {
         ctx.put("sender", invoice.getInvoicer());
         ctx.put("r", invoice.getInvoiceRows());
 
-        String outFile = "/home/vlad/Downloads/raportul-final.pdf";
+        String outFile = "/Users/Vlad.Craciunoiu/Downloads/raportul-final.pdf";
         OutputStream outputStream = new FileOutputStream(outFile);
         report.convert(ctx, options, outputStream);
     }
