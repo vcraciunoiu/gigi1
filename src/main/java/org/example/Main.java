@@ -10,7 +10,6 @@ import fr.opensagres.xdocreport.template.TemplateEngineKind;
 import fr.opensagres.xdocreport.template.formatter.FieldsMetadata;
 
 import java.io.*;
-import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -28,9 +27,14 @@ public class Main {
         FieldsMetadata metadata = report.createFieldsMetadata();
         metadata.load("r", InvoiceRow.class, true);
 
-        Invoice invoice = createStupidInvoice();
+        InvoiceProcessor invoiceProcessor = new InvoiceProcessor();
+
+        Invoice invoice = invoiceProcessor.createStupidInvoice();
 //        Invoice invoice = new Invoice();
 //        invoice.setVariabila1("greatest");
+
+        Double myPrice = invoiceProcessor.calculateTotalPriceForInvoice(invoice);
+        System.out.printf("Asta este pretu la factura, boss: %f", myPrice);
 
         // Add properties to the context
         IContext ctx = report.createContext();
@@ -44,43 +48,4 @@ public class Main {
         report.convert(ctx, options, outputStream);
     }
 
-    private static Invoice createStupidInvoice() {
-        Invoice invoice1 = new Invoice();
-
-        invoice1.setInvoiceNumber(123);
-        invoice1.setInvoiceDate(LocalDate.now());
-        invoice1.setDueDate(LocalDate.now());
-
-        Contact contactTo = new Contact();
-        contactTo.setName("contactname");
-        contactTo.setAddress1("addressa1");
-        contactTo.setAddress2("addr2");
-        contactTo.setEmail("con1@gmail.com");
-        contactTo.setPhone("0777087695");
-        invoice1.setTo(contactTo);
-
-        Invoicer invoiceru = new Invoicer();
-        invoiceru.setName("invoicername");
-        invoiceru.setEmail("invoiceru@gmail.com");
-        invoiceru.setPhone("07708976540");
-        invoiceru.setBankAccount("RO1234567890");
-        invoiceru.setAddress("Fabbricii 47");
-        invoice1.setInvoicer(invoiceru);
-
-        InvoiceRow irow1 = new InvoiceRow();
-        irow1.setDescription("bujie");
-        irow1.setPrice(23.50);
-        irow1.setQuantity(4.0);
-        irow1.setUnit("buc");
-        invoice1.getInvoiceRows().add(irow1);
-
-        InvoiceRow irow2 = new InvoiceRow();
-        irow2.setDescription("ulei de motor");
-        irow2.setPrice(21.67);
-        irow2.setQuantity(4.5);
-        irow2.setUnit("litru");
-        invoice1.getInvoiceRows().add(irow2);
-
-        return invoice1;
-    }
 }
