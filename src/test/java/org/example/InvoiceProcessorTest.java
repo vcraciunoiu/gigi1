@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.model.Invoice;
+import org.example.model.InvoiceRow;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

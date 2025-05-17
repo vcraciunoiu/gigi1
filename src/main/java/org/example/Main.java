@@ -8,6 +8,8 @@ import fr.opensagres.xdocreport.document.registry.XDocReportRegistry;
 import fr.opensagres.xdocreport.template.IContext;
 import fr.opensagres.xdocreport.template.TemplateEngineKind;
 import fr.opensagres.xdocreport.template.formatter.FieldsMetadata;
+import org.example.model.Invoice;
+import org.example.model.InvoiceRow;
 
 import java.io.*;
 

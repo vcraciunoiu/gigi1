@@ -1,5 +1,10 @@
 package org.example;
 
+import org.example.model.Contact;
+import org.example.model.Invoice;
+import org.example.model.InvoiceRow;
+import org.example.model.Invoicer;
+
 import java.time.LocalDate;
 
 public class InvoiceProcessor {
